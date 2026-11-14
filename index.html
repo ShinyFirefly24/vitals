@@ -5,9 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Vitals — Health Tracker</title>
 <meta name="description" content="A private, minimal tracker for blood pressure, heart rate, medications and more.">
-<meta name="theme-color" content="#f3eee4" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0b111e" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%232a78d6'/%3E%3Cpath d='M6 17h5l2-5 4 10 3-7 2 2h4' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#e4f2ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1915" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%23e4f2ea%22%2F%3E%3Ccircle%20cx%3D%2216.0%22%20cy%3D%2216.0%22%20r%3D%2212.48%22%20fill%3D%22%2324443a%22%2F%3E%3Ccircle%20cx%3D%2216.0%22%20cy%3D%2216.0%22%20r%3D%2211.378823529411765%22%20fill%3D%22none%22%20stroke%3D%22%235b7268%22%20stroke-width%3D%222.2023529411764704%22%2F%3E%3Cg%20transform%3D%22translate%289.392941176470588%209.392941176470588%29%20scale%280.5505882352941177%29%22%3E%3Cpath%20d%3D%22M3%2013h4l2-5%204%2010%203-7%201.5%202H21%22%20fill%3D%22none%22%20stroke%3D%22%23fffaf0%22%20stroke-width%3D%222.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+<link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Vitals">
+<meta name="application-name" content="Vitals">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -57,6 +67,7 @@ a{color:var(--accent)}
 
 /* ---------- Shell ---------- */
 .topbar{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter:saturate(1.4) blur(14px); -webkit-backdrop-filter:saturate(1.4) blur(14px); border-bottom:1px solid var(--border)}
+.topbar{padding-top:env(safe-area-inset-top)}
 .topbar-in{max-width:820px; margin:0 auto; padding:12px 20px; display:flex; align-items:center; gap:16px}
 .brand{display:flex; align-items:center; gap:10px; font-weight:650; letter-spacing:-.02em; font-size:17px; margin-right:auto; text-decoration:none; color:var(--text)}
 .brand-mark{width:28px; height:28px; border-radius:8px; background:var(--accent); display:grid; place-items:center}
@@ -385,19 +396,141 @@ th{text-transform:uppercase; letter-spacing:.08em; font-size:10.5px; font-weight
   .hero-lines{width:70%; bottom:auto; top:26px; left:auto; right:-20px; border-radius:999px 0 0 999px; -webkit-mask:linear-gradient(270deg,transparent,#000 35%); mask:linear-gradient(270deg,transparent,#000 35%); opacity:.55}
 }
 
+/* =====================================================================
+   COLOR SCHEME: cream header, mint trim
+   ===================================================================== */
+:root{
+  --bg:#e4f2ea; --surface:#fffaf0; --surface-2:#f4ecdc; --border:#e6dcc6; --border-strong:#d3c6a9;
+  --text:#24443a; --text-2:#4b6a5f; --muted:#83928a;
+  --accent:#24443a; --accent-2:#4fbf96; --accent-ink:#fffaf0; --accent-soft:#dcefe5;
+  --s1:#138d64; --s2:#c98a10; --s3:#8a59c9; --s4:#1696a8; --s5:#d06a2e; --s6:#5f6fd1; --s7:#5f8a10; --s8:#c9558f;
+  --grid:#ece4d2; --axis:#a9ae9f;
+  --shadow:0 1px 0 rgba(255,255,255,.9) inset, 0 1px 2px rgba(36,68,58,.05), 0 14px 34px -18px rgba(36,68,58,.25);
+  --hero:linear-gradient(120deg,#f7eedb 0%,#f3e8d2 55%,#eddcbb 100%);
+  --hero-text:#24443a; --hero-muted:rgba(36,68,58,.66); --hero-eyebrow:#2a8f6a;
+  --hero-inner:#f5ebd6; --hero-track:rgba(36,68,58,.11); --hero-ring-line:rgba(36,68,58,.08);
+  --hero-shadow:0 22px 50px -26px rgba(36,68,58,.45), inset 0 0 0 1px rgba(36,68,58,.06);
+  --g1:#3aa883; --g2:#1696a8; --g3:#c98a10;
+}
+@media (prefers-color-scheme: dark){
+  :root:where(:not([data-theme="light"])){
+    --bg:#0f1915; --surface:#16231e; --surface-2:#1d2d27; --border:#263a32; --border-strong:#355044;
+    --text:#f1e9d8; --text-2:#c3cbbf; --muted:#869489;
+    --accent:#7fd8b4; --accent-2:#6fd3ad; --accent-ink:#0f1915; --accent-soft:#1c3329;
+    --s1:#169a6e; --s2:#c08a16; --s3:#9470d6; --s4:#1c9aad; --s5:#d26e36; --s6:#6c7bdc; --s7:#68951a; --s8:#cf629b;
+    --grid:#1f2e28; --axis:#50665b;
+    --shadow:0 1px 0 rgba(255,255,255,.03) inset, 0 14px 34px -18px rgba(0,0,0,.6);
+    --hero:linear-gradient(120deg,#22352d 0%,#1b2b25 55%,#16231e 100%);
+    --hero-text:#f1e9d8; --hero-muted:rgba(241,233,216,.66); --hero-eyebrow:#7fd8b4;
+    --hero-inner:#1c2c26; --hero-track:rgba(241,233,216,.12); --hero-ring-line:rgba(241,233,216,.07);
+    --hero-shadow:0 22px 50px -24px rgba(0,0,0,.7), inset 0 0 0 1px rgba(241,233,216,.05);
+    --g1:#6fd3ad; --g2:#3fb8c8; --g3:#d9a640;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1915; --surface:#16231e; --surface-2:#1d2d27; --border:#263a32; --border-strong:#355044;
+  --text:#f1e9d8; --text-2:#c3cbbf; --muted:#869489;
+  --accent:#7fd8b4; --accent-2:#6fd3ad; --accent-ink:#0f1915; --accent-soft:#1c3329;
+  --s1:#169a6e; --s2:#c08a16; --s3:#9470d6; --s4:#1c9aad; --s5:#d26e36; --s6:#6c7bdc; --s7:#68951a; --s8:#cf629b;
+  --grid:#1f2e28; --axis:#50665b;
+  --shadow:0 1px 0 rgba(255,255,255,.03) inset, 0 14px 34px -18px rgba(0,0,0,.6);
+  --hero:linear-gradient(120deg,#22352d 0%,#1b2b25 55%,#16231e 100%);
+  --hero-text:#f1e9d8; --hero-muted:rgba(241,233,216,.66); --hero-eyebrow:#7fd8b4;
+  --hero-inner:#1c2c26; --hero-track:rgba(241,233,216,.12); --hero-ring-line:rgba(241,233,216,.07);
+  --hero-shadow:0 22px 50px -24px rgba(0,0,0,.7), inset 0 0 0 1px rgba(241,233,216,.05);
+  --g1:#6fd3ad; --g2:#3fb8c8; --g3:#d9a640;
+}
+body{background:
+    radial-gradient(1100px 520px at 100% -10%, color-mix(in srgb, #f3e8d2 70%, transparent), transparent 62%),
+    radial-gradient(900px 600px at -15% 10%, color-mix(in srgb, var(--accent-2) 14%, transparent), transparent 60%),
+    var(--bg); background-attachment:fixed}
+.hero{color:var(--hero-text); box-shadow:var(--hero-shadow)}
+.hero::before{border-color:var(--hero-ring-line); box-shadow:0 0 0 34px color-mix(in srgb, var(--hero-ring-line) 40%, transparent), 0 0 0 70px color-mix(in srgb, var(--hero-ring-line) 25%, transparent)}
+.hero-lines{background:repeating-linear-gradient(180deg, var(--accent-2) 0 3px, transparent 3px 8.5px)}
+.hero-date .eyebrow{color:var(--hero-eyebrow)}
+.hero-date .hero-sub{color:var(--hero-muted)}
+.ring{background:conic-gradient(var(--ring, var(--g1)) calc(var(--p) * 1%), var(--hero-track) 0); box-shadow:none}
+.ring.static{background:radial-gradient(circle, transparent 60%, var(--hero-track) 61%)}
+.ring > span{color:var(--hero-text); box-shadow:inset 0 2px 5px rgba(36,68,58,.12)}
+.gauge .g-l{color:var(--hero-muted)}
+.progress > i{background:linear-gradient(180deg, color-mix(in srgb, var(--g2) 70%, #fff), var(--g2) 60%)}
+.stat::before{background:var(--accent-2); opacity:1}
+
+/* ---------- Layout safety + mobile polish ---------- */
+html, body{overflow-x:clip}
+main{width:100%}
+.stack{grid-template-columns:minmax(0,1fr)}
+.stack > *, .card, .hero, .page-head, .report{min-width:0; max-width:100%}
+.table-wrap{max-width:100%; -webkit-overflow-scrolling:touch}
+.form-actions{flex-wrap:wrap}
+.inline{min-width:0}
+@media (max-width:640px){
+  main{padding:16px 12px calc(136px + env(safe-area-inset-bottom))}
+  .topbar-in{padding:12px 16px}
+  .page-head{margin:2px 2px 16px}
+  .page-head h1{font-size:25px; gap:12px}
+  .page-head .inline{width:100%; justify-content:space-between}
+  .seg{max-width:100%; overflow-x:auto; scrollbar-width:none}
+  .seg::-webkit-scrollbar{display:none}
+  .seg button{padding:7px 11px}
+  .stack{gap:12px}
+  .card{padding:18px 16px; border-radius:22px}
+  .hero{border-radius:22px; margin-bottom:12px}
+  .card-head{flex-wrap:wrap; row-gap:4px}
+  .card-head .meta{font-size:12px}
+  .stats{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .stat-v{font-size:19px}
+  .readout .big{font-size:34px}
+  /* 16px inputs stop iOS from zooming in when a field is tapped */
+  .input, .field input, .field select, .field textarea{font-size:16px}
+  .form-actions .btn{flex:1 1 auto}
+  .section-label{margin:22px 4px 10px}
+  .set-row{gap:10px}
+  .set-row .ico{width:34px; height:34px}
+  .form-grid[style*="padding:0 0 14px 48px"]{padding-left:0 !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+  table{font-size:13px}
+  th, td{padding:8px 5px}
+  dialog{max-width:calc(100vw - 16px)}
+  .modal{padding:20px 16px; border-radius:24px; max-height:calc(100dvh - 24px)}
+  .report{padding:18px 14px; border-radius:20px}
+  .rep-head{flex-direction:column; gap:6px}
+  .rep-head .meta{text-align:left}
+  .report .rep-sec{overflow-x:auto}
+}
+@media (max-width:370px){
+  .page-head h1{font-size:22px}
+  .hero-date h1{font-size:32px}
+  .ring{width:56px; height:56px} .ring > span{width:45px; height:45px; font-size:12.5px}
+  .nav a{font-size:10.5px}
+}
+@media (pointer:coarse){
+  .btn.icon{width:40px; height:40px}
+  .check{width:28px; height:28px}
+}
+td.dt span{display:block; white-space:nowrap}
+.show-sm{display:none}
+@media (max-width:640px){
+  .hide-sm{display:none !important}
+  .show-sm{display:inline}
+  .page-head .inline{flex-wrap:nowrap; gap:8px}
+  .page-head .inline .seg{flex:1 1 auto}
+  .page-head .inline .seg button{flex:1; padding:7px 8px}
+  .page-head .inline > .btn{padding:9px 14px}
+  td .chip{padding:3px 7px}
+}
 /* ---------- Doctor report (always light, print/image friendly) ---------- */
 .report{
   color-scheme:light;
   --bg:#ffffff; --surface:#ffffff; --surface-2:#f4f4f1; --border:#e4e3df; --border-strong:#d6d5d0;
   --text:#0b0b0b; --text-2:#52514e; --muted:#7c7b76;
-  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4; --s6:#008300; --s7:#6250d6; --s8:#e34948;
+  --s1:#138d64; --s2:#c98a10; --s3:#8a59c9; --s4:#1696a8; --s5:#d06a2e; --s6:#5f6fd1; --s7:#5f8a10; --s8:#c9558f;
   --good:#1a7f37; --good-bg:#e7f5ea; --warn:#946200; --warn-bg:#fdf3dc; --serious:#b8501e; --serious-bg:#fdeee6; --crit:#c42b2b; --crit-bg:#fcebeb; --info:#2a78d6; --info-bg:#eaf2fc;
   --grid:#efeeea; --axis:#a3a29c;
-  --accent:#1d3f72; --accent-2:#e2725b; --text:#14213d; --text-2:#4a5068;
+  --accent:#24443a; --accent-2:#4fbf96; --text:#1f3a31; --text-2:#4b6a5f;
   background:#fff; color:var(--text); border:1px solid var(--border); border-radius:var(--radius); padding:32px; font-family:var(--font); font-size:13.5px; line-height:1.45;
 }
-.rep-head{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; padding-bottom:22px; margin-bottom:18px; background:repeating-linear-gradient(180deg, #e2725b 0 2px, transparent 2px 4.5px) left bottom / 100% 11px no-repeat}
-.rep-head h2{margin:0; font-family:var(--display); text-transform:uppercase; letter-spacing:.1em; font-size:22px; color:#14213d; padding-top:.15em}
+.rep-head{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; padding-bottom:22px; margin-bottom:18px; background:repeating-linear-gradient(180deg, #4fbf96 0 2px, transparent 2px 4.5px) left bottom / 100% 11px no-repeat}
+.rep-head h2{margin:0; font-family:var(--display); text-transform:uppercase; letter-spacing:.1em; font-size:22px; color:#24443a; padding-top:.15em}
 .rep-head .who{font-size:15px; font-weight:600; margin-top:2px}
 .rep-head .meta{color:var(--text-2); font-size:12.5px; text-align:right}
 .rep-sec{margin-top:20px; break-inside:avoid; page-break-inside:avoid}
@@ -701,7 +834,7 @@ function drawLine(el, cfg){
   ticks.forEach(t => { g += `<line class="gridline" x1="${pl}" x2="${W-pr}" y1="${Y(t)}" y2="${Y(t)}"/><text class="tick" x="${pl-8}" y="${Y(t)+3.5}" text-anchor="end">${fmtNum(t, t % 1 ? 1 : 0)}</text>`; });
   refs.forEach(r => { g += `<line class="ref" x1="${pl}" x2="${W-pr}" y1="${Y(r.y)}" y2="${Y(r.y)}"/><text class="ref-label" x="${pl+4}" y="${Y(r.y)-4}">${esc(r.label)}</text>`; });
   xLabelIdx(n, W < 420 ? 4 : 6).forEach((i, j, arr) => { const anchor = arr.length === 1 ? "middle" : j === 0 ? "start" : j === arr.length-1 ? "end" : "middle"; g += `<text class="tick" x="${X(i)}" y="${H-6}" text-anchor="${anchor}">${fmtDay(days[i])}</text>`; });
-  const showDots = cfg.dots ?? (vals.length <= 60);
+  const showDots = cfg.dots ?? (vals.length <= 60 && (n <= 1 || iw / (n - 1) >= 9));
   const labels = [];
   series.forEach(s => {
     let d = "", pts = [];
@@ -825,7 +958,7 @@ function renderToday(){
     const tot = sum(wt.map(w => w.ml)), goal = S.settings.water.goal, pct = Math.min(100, goal ? tot / goal * 100 : 0);
     const u = wUnit(), q = u === "oz" ? [8, 12, 16] : [250, 500, 750];
     h += `<section class="card">
-      <div class="card-head"><h2><span class="dot" style="background:var(--s1)"></span>Water</h2><span class="meta">${wt.length} ${wt.length === 1 ? "entry" : "entries"}</span></div>
+      <div class="card-head"><h2><span class="dot" style="background:var(--s4)"></span>Water</h2><span class="meta">${wt.length} ${wt.length === 1 ? "entry" : "entries"}</span></div>
       <div class="readout"><span class="big">${fmtWater(tot)}</span><span class="unit">/ ${fmtWater(goal)} ${u}</span>${tot >= goal && goal ? `<span class="chip good">${ICON.check}Goal reached</span>` : ""}</div>
       <div class="progress" role="progressbar" aria-valuenow="${Math.round(pct)}" aria-valuemin="0" aria-valuemax="100"><i style="width:${pct}%"></i></div>
       <div class="inline">
@@ -845,7 +978,7 @@ function renderToday(){
     const mins = sum(ex.map(x => +x.minutes || 0));
     const types = [...new Set(S.exercise.map(x => x.type).filter(Boolean))];
     h += `<section class="card">
-      <div class="card-head"><h2><span class="dot" style="background:var(--s3)"></span>Exercise</h2><span class="meta">${mins} min today${S.settings.exercise.goal ? ` · goal ${S.settings.exercise.goal}` : ""}</span></div>
+      <div class="card-head"><h2><span class="dot" style="background:var(--s7)"></span>Exercise</h2><span class="meta">${mins} min today${S.settings.exercise.goal ? ` · goal ${S.settings.exercise.goal}` : ""}</span></div>
       <form data-form="exercise" class="form-grid" autocomplete="off">
         <label class="field wide"><span>Activity</span><input name="type" type="text" list="ex-types" placeholder="Walk, swim, yoga…" required></label>
         <label class="field"><span>Minutes</span><input name="minutes" type="number" inputmode="numeric" min="1" placeholder="30" required></label>
@@ -891,9 +1024,9 @@ function heroHTML(tk){
   g.push(`<div class="gauge"><div class="ring static"><span>${latest ? `${latest.sys}<small>/${latest.dia}</small>` : "—"}</span></div><span class="g-l">Last BP</span></div>`);
   if (due) g.push(`<div class="gauge"><div class="ring" style="--p:${taken/due*100}"><span>${taken}<small>of ${due}</small></span></div><span class="g-l">Meds</span></div>`);
   if (S.settings.water.enabled){ const tot = sum(S.water.filter(w => dayKey(w.ts) === tk).map(w => w.ml)), goal = S.settings.water.goal || 1, p = Math.min(100, tot/goal*100);
-    g.push(`<div class="gauge"><div class="ring" style="--p:${p}; --ring:#7fb2f0"><span>${Math.round(p)}<small>%</small></span></div><span class="g-l">Water</span></div>`); }
+    g.push(`<div class="gauge"><div class="ring" style="--p:${p}; --ring:var(--g2)"><span>${Math.round(p)}<small>%</small></span></div><span class="g-l">Water</span></div>`); }
   if (S.settings.exercise.enabled){ const mins = sum(S.exercise.filter(x => dayKey(x.ts) === tk).map(x => +x.minutes || 0)), goal = S.settings.exercise.goal;
-    g.push(`<div class="gauge"><div class="ring" style="--p:${goal ? Math.min(100, mins/goal*100) : (mins ? 100 : 0)}; --ring:#5fd3a6"><span>${mins}<small>min</small></span></div><span class="g-l">Active</span></div>`); }
+    g.push(`<div class="gauge"><div class="ring" style="--p:${goal ? Math.min(100, mins/goal*100) : (mins ? 100 : 0)}; --ring:var(--g3)"><span>${mins}<small>min</small></span></div><span class="g-l">Active</span></div>`); }
   return `<section class="hero"><span class="hero-lines" aria-hidden="true"></span>
     <div class="hero-date"><span class="eyebrow">${d.toLocaleDateString([], { weekday:"long" })}</span><h1>${d.toLocaleDateString([], { month:"short", day:"numeric" })}</h1><span class="hero-sub">${greet}${S.settings.reportName ? ", " + esc(S.settings.reportName.split(" ")[0]) : ""}</span></div>
     <div class="hero-gauges">${g.join("")}</div></section>`;
@@ -932,7 +1065,7 @@ function medsTodayCard(tk){
     return `<li class="row"><span class="check" style="border-style:dashed; cursor:default" aria-hidden="true"></span><div class="row-main"><div class="row-title">${esc(m.name)}${m.dose ? ` <span class="row-sub">${esc(m.dose)}</span>` : ""}</div><div class="row-sub">As needed${cnt ? ` · taken ${cnt}× today` : ""}</div></div><button class="btn sm" data-action="prn" data-id="${m.id}">${ICON.plus}Log dose</button></li>`;
   }).join("");
   return `<section class="card">
-    <div class="card-head"><h2><span class="dot" style="background:var(--s7)"></span>Medications</h2><span class="meta">${doses.length ? `${taken} of ${doses.length} taken` : ""}</span></div>
+    <div class="card-head"><h2><span class="dot" style="background:var(--s1)"></span>Medications</h2><span class="meta">${doses.length ? `${taken} of ${doses.length} taken` : ""}</span></div>
     ${rows ? `<ul class="list" style="margin-top:0; border-top:0">${rows}</ul>` : `<p class="empty">No medications yet. <a href="#meds">Add your schedule</a> to get a daily checklist.</p>`}
   </section>`;
 }
@@ -962,7 +1095,7 @@ function renderTrends(){
   const inR = e => dset.has(dayKey(e.ts));
   let h = `<div class="page-head"><div><h1>Trends</h1><p class="sub">${fmtDay(days[0], { month:"short", day:"numeric", year:"numeric" })} – ${fmtDay(days[days.length-1], { month:"short", day:"numeric", year:"numeric" })}</p></div>
     <div class="inline"><div class="seg" role="group" aria-label="Date range">${[["7","7D"],["30","30D"],["90","90D"],["365","1Y"],["all","All"]].map(([v,l]) => `<button type="button" data-action="range" data-v="${v}" aria-pressed="${range===v}">${l}</button>`).join("")}</div>
-    <a class="btn" href="#report">Doctor report</a></div></div><div class="stack">`;
+    <a class="btn" href="#report"><span class="hide-sm">Doctor report</span><span class="show-sm">Report</span></a></div></div><div class="stack">`;
 
   /* BP */
   const rd = S.readings.filter(inR);
@@ -1038,11 +1171,11 @@ function renderTrends(){
     series:[{ name:"Systolic", short:"Sys", color:"var(--s1)", values:sysD }, { name:"Diastolic", short:"Dia", color:"var(--s2)", values:diaD }],
     refs:[{ y:120, label:"120" }, { y:80, label:"80" }], empty:"No blood pressure readings in this range",
     tipExtra: k => counts[k] ? `<div class="tr" style="margin-top:3px"><span>${counts[k] > 1 ? `Avg of ${counts[k]} readings` : "1 reading"}</span>${bpChip(bpCat(Math.round(sysD[k]), Math.round(diaD[k])))}</div>` : "" });
-  mountChart("c-hr", "line", { days, label:"Heart rate", unit:"bpm", series:[{ name:"Heart rate", color:"var(--s8)", values:hrD }], empty:"No heart rate readings in this range" });
-  mountChart("c-med", "bar", { days, height:170, label:"Medication adherence", name:"Adherence", unit:"%", color:"var(--s7)", values:adh, max:100,
+  mountChart("c-hr", "line", { days, label:"Heart rate", unit:"bpm", series:[{ name:"Heart rate", color:"var(--s4)", values:hrD }], empty:"No heart rate readings in this range" });
+  mountChart("c-med", "bar", { days, height:170, label:"Medication adherence", name:"Adherence", unit:"%", color:"var(--s1)", values:adh, max:100,
     tipExtra: k => { const a = adherenceFor(k); return a ? `<div class="tr"><span>Doses</span><strong>${a.taken}/${a.due}</strong></div>` : ""; }, empty:"No scheduled doses in this range" });
-  mountChart("c-water", "bar", { days, label:"Water intake", name:"Water", unit:wUnit(), color:"var(--s1)", values:waterD, goal:mlToDisp(S.settings.water.goal), empty:"No water logged in this range" });
-  mountChart("c-ex", "bar", { days, label:"Exercise minutes", name:"Exercise", unit:"min", color:"var(--s3)", values:exD, goal:S.settings.exercise.goal || null, empty:"No exercise logged in this range" });
+  mountChart("c-water", "bar", { days, label:"Water intake", name:"Water", unit:wUnit(), color:"var(--s4)", values:waterD, goal:mlToDisp(S.settings.water.goal), empty:"No water logged in this range" });
+  mountChart("c-ex", "bar", { days, label:"Exercise minutes", name:"Exercise", unit:"min", color:"var(--s7)", values:exD, goal:S.settings.exercise.goal || null, empty:"No exercise logged in this range" });
   mCharts.forEach(({ id, m, d }) => {
     const color = metricColor(S.metrics.indexOf(m));
     if (m.agg === "sum") mountChart(id, "bar", { days, label:m.name, name:m.name, unit:m.unit, color, values:d, goal:m.goal, decimals:m.decimals, empty:`No ${m.name.toLowerCase()} data in this range` });
@@ -1050,6 +1183,7 @@ function renderTrends(){
   });
 }
 
+const dtCell = ts => `<td class="dt"><span>${fmtDay(dayKey(ts))}</span><span class="row-sub">${fmtTime(ts)}</span></td>`;
 function historySets(){
   const sets = [["readings","Blood pressure & heart rate"],["meds","Medication doses"]];
   if (S.settings.water.enabled || S.water.length) sets.push(["water","Water"]);
@@ -1064,8 +1198,8 @@ function historySection(days){
   const act = (kind, id) => `<td class="act"><button class="btn ghost icon" data-action="edit-${kind}" data-id="${id}" aria-label="Edit">${ICON.edit}</button><button class="btn ghost icon" data-action="del-${kind}" data-id="${id}" aria-label="Delete">${ICON.trash}</button></td>`;
   if (histSet === "readings"){
     const rows = S.readings.filter(inR).sort(byTsDesc); n = rows.length;
-    head = `<th>Date</th><th class="num">BP</th><th class="num">HR</th><th>Category</th><th>Note</th><th></th>`;
-    body = rows.map(r => `<tr><td>${fmtDateTime(r.ts)}</td><td class="num">${r.sys != null ? `${r.sys}/${r.dia}` : "—"}</td><td class="num">${r.hr ?? "—"}</td><td>${bpChip(bpCat(r.sys, r.dia))}</td><td class="row-sub">${esc(r.note||"")}</td>${act("reading", r.id)}</tr>`).join("");
+    head = `<th>Date</th><th class="num">BP</th><th class="num">HR</th><th>Category</th><th class="hide-sm">Note</th><th></th>`;
+    body = rows.map(r => `<tr>${dtCell(r.ts)}<td class="num">${r.sys != null ? `${r.sys}/${r.dia}` : "—"}</td><td class="num">${r.hr ?? "—"}</td><td>${bpChip(bpCat(r.sys, r.dia))}</td><td class="row-sub hide-sm">${esc(r.note||"")}</td>${act("reading", r.id)}</tr>`).join("");
   } else if (histSet === "meds"){
     const rows = [];
     Object.entries(S.medLog).forEach(([k, log]) => { if (!dset.has(k)) return; Object.entries(log).forEach(([key, ts]) => { const [mid, slot] = key.split("|"); const m = S.meds.find(x => x.id === mid); rows.push({ k, key, ts, m, slot }); }); });
@@ -1075,16 +1209,16 @@ function historySection(days){
   } else if (histSet === "water"){
     const rows = S.water.filter(inR).sort(byTsDesc); n = rows.length;
     head = `<th>Date</th><th class="num">Amount</th><th></th>`;
-    body = rows.map(w => `<tr><td>${fmtDateTime(w.ts)}</td><td class="num">${fmtWater(w.ml)} ${wUnit()}</td>${act("water", w.id)}</tr>`).join("");
+    body = rows.map(w => `<tr>${dtCell(w.ts)}<td class="num">${fmtWater(w.ml)} ${wUnit()}</td>${act("water", w.id)}</tr>`).join("");
   } else if (histSet === "exercise"){
     const rows = S.exercise.filter(inR).sort(byTsDesc); n = rows.length;
-    head = `<th>Date</th><th>Activity</th><th class="num">Min</th><th>Intensity</th><th>Note</th><th></th>`;
-    body = rows.map(x => `<tr><td>${fmtDateTime(x.ts)}</td><td>${esc(x.type)}</td><td class="num">${x.minutes}</td><td>${esc(x.intensity||"")}</td><td class="row-sub">${esc(x.note||"")}</td>${act("exercise", x.id)}</tr>`).join("");
+    head = `<th>Date</th><th>Activity</th><th class="num">Min</th><th class="hide-sm">Intensity</th><th class="hide-sm">Note</th><th></th>`;
+    body = rows.map(x => `<tr>${dtCell(x.ts)}<td>${esc(x.type)}</td><td class="num">${x.minutes}</td><td class="hide-sm">${esc(x.intensity||"")}</td><td class="row-sub hide-sm">${esc(x.note||"")}</td>${act("exercise", x.id)}</tr>`).join("");
   } else {
     const m = S.metrics.find(x => "m:" + x.id === histSet);
     const rows = S.metricLog.filter(e => e.metricId === m.id && inR(e)).sort(byTsDesc); n = rows.length;
-    head = `<th>Date</th><th class="num">${esc(m.name)}${m.unit ? ` (${esc(m.unit)})` : ""}</th><th>Note</th><th></th>`;
-    body = rows.map(e => `<tr><td>${fmtDateTime(e.ts)}</td><td class="num">${fmtNum(e.value, m.decimals)}</td><td class="row-sub">${esc(e.note||"")}</td>${act("metric-entry", e.id)}</tr>`).join("");
+    head = `<th>Date</th><th class="num">${esc(m.name)}${m.unit ? ` (${esc(m.unit)})` : ""}</th><th class="hide-sm">Note</th><th></th>`;
+    body = rows.map(e => `<tr>${dtCell(e.ts)}<td class="num">${fmtNum(e.value, m.decimals)}</td><td class="row-sub hide-sm">${esc(e.note||"")}</td>${act("metric-entry", e.id)}</tr>`).join("");
   }
   return `<section class="card"><div class="card-head"><h2>History</h2>
       <select class="input" data-change="hist" style="width:auto; padding:7px 10px; font-size:14px" aria-label="Data set">${sets.map(([v,l]) => `<option value="${esc(v)}" ${v===histSet?"selected":""}>${esc(l)}</option>`).join("")}</select></div>
@@ -1104,7 +1238,7 @@ function renderMeds(){
       let due = 0, tk = 0;
       if (m.times && m.times.length) last7.forEach(k => { if ((m.created||0) > dayEnd(k)) return; if (!m.active && (!m.stoppedAt || m.stoppedAt < dayStart(k))) return; const log = S.medLog[k] || {}; m.times.forEach(t => { due++; if (log[`${m.id}|${t}`]) tk++; }); });
       const sched = m.times && m.times.length ? m.times.map(t => `<span class="chip">${fmtSlot(t)}</span>`).join(" ") : `<span class="chip">As needed</span>`;
-      return `<li class="row" style="${m.active ? "" : "opacity:.55"}"><span class="set-row" style="padding:0;border:0"><span class="ico" style="color:var(--s7)">${ICON.pill}</span></span><div class="row-main"><div class="row-title">${esc(m.name)}${m.dose ? ` <span class="row-sub">${esc(m.dose)}</span>` : ""}${m.active ? "" : ` <span class="chip">Paused</span>`}</div><div class="inline" style="gap:5px; margin-top:4px">${sched}</div>${m.notes ? `<div class="row-sub" style="margin-top:4px">${esc(m.notes)}</div>` : ""}</div>${due ? `<div style="text-align:right"><div class="row-val">${Math.round(tk/due*100)}%</div><div class="row-sub">last 7 days</div></div>` : ""}<div class="row-actions"><button class="btn ghost icon" data-action="edit-med" data-id="${m.id}" aria-label="Edit ${esc(m.name)}">${ICON.edit}</button></div></li>`;
+      return `<li class="row" style="${m.active ? "" : "opacity:.55"}"><span class="set-row" style="padding:0;border:0"><span class="ico" style="color:var(--s1)">${ICON.pill}</span></span><div class="row-main"><div class="row-title">${esc(m.name)}${m.dose ? ` <span class="row-sub">${esc(m.dose)}</span>` : ""}${m.active ? "" : ` <span class="chip">Paused</span>`}</div><div class="inline" style="gap:5px; margin-top:4px">${sched}</div>${m.notes ? `<div class="row-sub" style="margin-top:4px">${esc(m.notes)}</div>` : ""}</div>${due ? `<div style="text-align:right"><div class="row-val">${Math.round(tk/due*100)}%</div><div class="row-sub">last 7 days</div></div>` : ""}<div class="row-actions"><button class="btn ghost icon" data-action="edit-med" data-id="${m.id}" aria-label="Edit ${esc(m.name)}">${ICON.edit}</button></div></li>`;
     }).join("")}</ul></section>`;
   }
   h += footer();
@@ -1149,11 +1283,11 @@ function renderSettings(){
   let h = `<div class="page-head"><div><h1>Settings</h1><p class="sub">Choose what you track. Everything stays on this device.</p></div></div>`;
 
   h += `<div class="section-label">Add-ons</div><section class="card">
-    <div class="set-row"><span class="ico" style="color:var(--s1)">${ICON.drop}</span><div class="row-main"><div class="row-title">Water intake</div><div class="row-sub">Quick-add glasses and a daily goal</div></div><label class="switch"><input type="checkbox" data-change="mod" data-key="water" ${st.water.enabled ? "checked" : ""} aria-label="Water intake"></label></div>
+    <div class="set-row"><span class="ico" style="color:var(--s4)">${ICON.drop}</span><div class="row-main"><div class="row-title">Water intake</div><div class="row-sub">Quick-add glasses and a daily goal</div></div><label class="switch"><input type="checkbox" data-change="mod" data-key="water" ${st.water.enabled ? "checked" : ""} aria-label="Water intake"></label></div>
     ${st.water.enabled ? `<div class="form-grid" style="padding:0 0 14px 48px; grid-template-columns:repeat(2,minmax(0,160px))">
       <label class="field"><span>Daily goal (${st.water.unit})</span><input type="number" min="0" step="any" data-change="water-goal" value="${Math.round(mlToDisp(st.water.goal))}"></label>
       <label class="field"><span>Unit</span><select data-change="water-unit"><option value="ml" ${st.water.unit==="ml"?"selected":""}>Milliliters (ml)</option><option value="oz" ${st.water.unit==="oz"?"selected":""}>Fluid ounces (oz)</option></select></label></div>` : ""}
-    <div class="set-row"><span class="ico" style="color:var(--s3)">${ICON.run}</span><div class="row-main"><div class="row-title">Exercise</div><div class="row-sub">A list of activities you can add, edit and remove</div></div><label class="switch"><input type="checkbox" data-change="mod" data-key="exercise" ${st.exercise.enabled ? "checked" : ""} aria-label="Exercise"></label></div>
+    <div class="set-row"><span class="ico" style="color:var(--s7)">${ICON.run}</span><div class="row-main"><div class="row-title">Exercise</div><div class="row-sub">A list of activities you can add, edit and remove</div></div><label class="switch"><input type="checkbox" data-change="mod" data-key="exercise" ${st.exercise.enabled ? "checked" : ""} aria-label="Exercise"></label></div>
     ${st.exercise.enabled ? `<div class="form-grid" style="padding:0 0 14px 48px; grid-template-columns:minmax(0,160px)"><label class="field"><span>Daily goal (minutes)</span><input type="number" min="0" step="1" data-change="ex-goal" value="${st.exercise.goal || ""}" placeholder="None"></label></div>` : ""}
   </section>`;
 
@@ -1222,7 +1356,7 @@ function renderReport(){
   const am = bpR.filter(r => new Date(r.ts).getHours() < 12), pm = bpR.filter(r => new Date(r.ts).getHours() >= 12);
   const bpAvgTxt = a => a.length ? `${fmtNum(avg(a.map(r => r.sys)))}/${fmtNum(avg(a.map(r => r.dia)))}` : "—";
   // category split
-  const cats = [["Normal","good","var(--good)"],["Elevated","warn","var(--s4)"],["Stage 1","serious","var(--s2)"],["Stage 2","crit","var(--crit)"],["Hypertensive crisis","crit","#8f1d1d"],["Low","info","var(--s1)"]];
+  const cats = [["Normal","good","var(--good)"],["Elevated","warn","#e0b030"],["Stage 1","serious","#e07a3a"],["Stage 2","crit","var(--crit)"],["Hypertensive crisis","crit","#8f1d1d"],["Low","info","var(--info)"]];
   const cc = {}; bpR.forEach(r => { const c = bpCat(r.sys, r.dia).label; cc[c] = (cc[c]||0) + 1; });
   // adherence
   let due = 0, tk = 0, adh = {}; days.forEach(k => { const a = adherenceFor(k); if (a){ due += a.due; tk += a.taken; adh[k] = a.pct; } });
@@ -1277,8 +1411,8 @@ function renderReport(){
   main.innerHTML = h;
 
   mountChart("r-bp", "line", { days, height:200, label:"Blood pressure", unit:"mmHg", series:[{ name:"Systolic", short:"Sys", color:"var(--s1)", values:sysD }, { name:"Diastolic", short:"Dia", color:"var(--s2)", values:diaD }], refs:[{ y:120, label:"120" }, { y:80, label:"80" }], empty:"No readings in this range" });
-  mountChart("r-hr", "line", { days, height:150, label:"Heart rate", unit:"bpm", series:[{ name:"Heart rate", color:"var(--s8)", values:hrD }], empty:"No readings in this range" });
-  mountChart("r-med", "bar", { days, height:150, label:"Medication adherence", name:"Adherence", unit:"%", color:"var(--s7)", values:adh, max:100, empty:"No scheduled doses" });
+  mountChart("r-hr", "line", { days, height:150, label:"Heart rate", unit:"bpm", series:[{ name:"Heart rate", color:"var(--s4)", values:hrD }], empty:"No readings in this range" });
+  mountChart("r-med", "bar", { days, height:150, label:"Medication adherence", name:"Adherence", unit:"%", color:"var(--s1)", values:adh, max:100, empty:"No scheduled doses" });
 }
 
 async function reportToPNG(){

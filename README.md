@@ -16,14 +16,23 @@ A private, minimal web app for tracking blood pressure, heart rate and a medicat
 - **Your data.** Export a JSON backup, import it on another device, and export a CSV for spreadsheets.
 - Light, dark and auto themes, and a mobile layout with a bottom tab bar.
 
+## Files
+
+```
+index.html          the app
+manifest.json       app name, colors and icons for home-screen installs
+icons/              app icon in every size (iPhone, Android, browser tab)
+README.md           this file
+```
+
 ## Publish on GitHub Pages
 
 1. Create a new repository on GitHub, for example `vitals`.
-2. Upload `index.html` (and this README) to the root of the repository.
+2. Click **Add file → Upload files** and drag in `index.html`, `manifest.json`, `README.md` **and the whole `icons` folder** (drag the folder itself so it keeps its name), then click **Commit changes**.
 3. Go to **Settings → Pages → Build and deployment**, choose **Deploy from a branch**, select `main` and `/ (root)`, and click Save.
 4. After a minute or so the app is live at `https://<your-username>.github.io/vitals/`.
 
-On a phone, open that link and use **Add to Home Screen** to get an app-like icon.
+On a phone, open that link and use **Add to Home Screen**. It gets the Vitals icon and opens full-screen like a regular app. If you added it to your home screen before the icon existed, delete the old shortcut and add it again to pick up the new icon.
 
 ## Privacy
 
