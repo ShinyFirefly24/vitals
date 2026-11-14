@@ -378,7 +378,7 @@ th{text-transform:uppercase; letter-spacing:.08em; font-size:10.5px; font-weight
 .hero-lines{position:absolute; left:-20px; bottom:22px; width:46%; height:20px; background:repeating-linear-gradient(180deg, #e2725b 0 3px, transparent 3px 8.5px); border-radius:0 999px 999px 0; opacity:.9; z-index:-1; -webkit-mask:linear-gradient(90deg,transparent,#000 35%); mask:linear-gradient(90deg,transparent,#000 35%)}
 .hero-date .eyebrow{display:block; font-family:var(--display); text-transform:uppercase; letter-spacing:.3em; font-size:12px; color:#f0a08c; font-weight:700}
 .hero-date h1{margin:6px 0 2px; font-family:var(--display); font-weight:700; font-size:44px; line-height:1; letter-spacing:.02em; text-transform:uppercase; padding-top:.12em}
-.hero-date .hero-sub{display:block; color:rgba(251,246,236,.7); font-size:14px; margin-bottom:22px}
+.hero-date .hero-sub{display:block; color:rgba(251,246,236,.7); font-size:14px; margin-bottom:0}
 .hero-gauges{display:flex; gap:18px; flex-wrap:wrap}
 .gauge{display:flex; flex-direction:column; align-items:center; gap:8px; min-width:76px}
 .ring{--p:0; width:76px; height:76px; border-radius:50%; display:grid; place-items:center; background:conic-gradient(var(--ring,#f0a08c) calc(var(--p) * 1%), rgba(255,255,255,.13) 0); box-shadow:0 0 0 1px rgba(255,255,255,.06)}
@@ -387,13 +387,13 @@ th{text-transform:uppercase; letter-spacing:.08em; font-size:10.5px; font-weight
 .ring.static{background:radial-gradient(circle, transparent 60%, rgba(255,255,255,.13) 61%)}
 .gauge .g-l{font-size:10.5px; text-transform:uppercase; letter-spacing:.14em; color:rgba(251,246,236,.72); font-weight:700}
 @media (max-width:640px){
-  .hero{padding:22px 20px; border-radius:26px}
+  .hero{padding:20px 18px 18px; border-radius:26px; row-gap:14px}
   .hero-date h1{font-size:36px}
   .hero-gauges{width:100%; justify-content:space-between; gap:4px; flex-wrap:nowrap}
   .gauge{min-width:0; flex:1}
   .ring{width:62px; height:62px} .ring > span{width:50px; height:50px; font-size:13.5px}
   .gauge .g-l{font-size:9.5px; letter-spacing:.1em}
-  .hero-lines{width:70%; bottom:auto; top:26px; left:auto; right:-20px; border-radius:999px 0 0 999px; -webkit-mask:linear-gradient(270deg,transparent,#000 35%); mask:linear-gradient(270deg,transparent,#000 35%); opacity:.55}
+  .hero-lines{width:calc(38% + 12px); bottom:auto; top:19px; left:auto; right:4px; border-radius:999px; -webkit-mask:linear-gradient(270deg,transparent,#000 35%); mask:linear-gradient(270deg,transparent,#000 35%); opacity:.55}
 }
 
 /* =====================================================================
@@ -517,6 +517,14 @@ td.dt span{display:block; white-space:nowrap}
   .page-head .inline .seg button{flex:1; padding:7px 8px}
   .page-head .inline > .btn{padding:9px 14px}
   td .chip{padding:3px 7px}
+}
+@media (max-width:640px){
+  .hero .hero-lines{display:none}
+  .hero-date{flex:1 1 100%; min-width:0}
+  .hero-date .eyebrow{display:flex; align-items:center; gap:12px}
+  .hero-date .eyebrow::after{content:""; flex:1; height:20px; margin-right:-10px; border-radius:999px;
+    background:repeating-linear-gradient(180deg, var(--accent-2) 0 3px, transparent 3px 8.5px);
+    -webkit-mask:linear-gradient(270deg, transparent 0%, #000 45%); mask:linear-gradient(270deg, transparent 0%, #000 45%)}
 }
 /* ---------- Doctor report (always light, print/image friendly) ---------- */
 .report{
